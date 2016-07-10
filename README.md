@@ -4,9 +4,9 @@ A very simple logger for PHP. No magic configuration required. Just the basic fe
 
 Provided interfaces and classes:
 
-* [phputil\Logger] interface (https://github.com/thiagodp/logger/blob/master/lib/Logger.php)
-* [phputil\BaseLogger] abstract class (https://github.com/thiagodp/logger/blob/master/lib/BaseLogger.php)
-* [phputil\TextFileLogger] class (https://github.com/thiagodp/logger/blob/master/lib/TextFileLogger.php)
+* [phputil\Logger](https://github.com/thiagodp/logger/blob/master/lib/Logger.php) interface
+* [phputil\BaseLogger](https://github.com/thiagodp/logger/blob/master/lib/BaseLogger.php) abstract class
+* [phputil\TextFileLogger](https://github.com/thiagodp/logger/blob/master/lib/TextFileLogger.php) class
 
 Available log methods:
 
