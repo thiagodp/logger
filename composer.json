@@ -1,0 +1,23 @@
+{
+	"name": "phputil/logger",
+	"type": "library",
+	"description": "A very simple logger",
+	"keywords": [ "log", "file", "php" ],
+	"homepage": "http://github.com/thiagodp/logger",
+	"license": "LGPL-3",
+	"authors": [ { "name": "Thiago Delgado Pinto" } ],
+	"support": {
+		"issues": "https://github.com/thiagodp/logger/issues",
+		"source": "https://github.com/thiagodp/logger"
+	},
+	"require": {
+		"php": ">=5.2.0"
+	},
+	"require-dev": {
+    },	
+	"suggest": {
+	},
+	"autoload": {
+		"psr-4": { "phputil\\": "lib/" }
+	}
+}
