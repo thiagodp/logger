@@ -7,6 +7,7 @@ Provided interfaces and classes:
 * [phputil\Logger](https://github.com/thiagodp/logger/blob/master/lib/Logger.php) interface
 * [phputil\BaseLogger](https://github.com/thiagodp/logger/blob/master/lib/BaseLogger.php) abstract class
 * [phputil\TextFileLogger](https://github.com/thiagodp/logger/blob/master/lib/TextFileLogger.php) class
+* [phputil\FakeLogger](https://github.com/thiagodp/logger/blob/master/lib/FakeLogger.php) class (v1.1+)
 
 Available log methods:
 
@@ -27,9 +28,13 @@ composer require phputil/logger
 ```php
 <?php
 require_once 'vendor/autoload.php'; // composer
-use phputil\TextFileLogger;
 
-$logger = new TextFileLogger( 'log.txt' );
+use phputil\TextFileLogger;
+use phputil\FakeLogger;
+
+$inDebugMode = true;
+
+$logger = $inDebugMode ? new TextFileLogger( 'log.txt' ) : new FakeLogger();
 
 $logger->info( 'Hello world' );
 try {

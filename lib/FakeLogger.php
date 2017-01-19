@@ -4,12 +4,14 @@ namespace phputil;
 use \Exception;
 
 /**
- *  A logger implementation that does nothing. It may be useful to "disable" the log by
- *  creating a Logger implementation with an object of this class.
+ *  A fake logger implementation that does nothing.
+ * 
+ *  It may be used for "disabling" the log by creating a Logger implementation
+ *  with an object of this class.
  *  
  *  @author	Thiago Delgado Pinto
  */
-final class DummyLogger implements Logger {
+final class FakeLogger implements Logger {
 
 	/** @inheritDoc */
 	function debug( $message, Exception $e = null, array $context = array() ) {}
