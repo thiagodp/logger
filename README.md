@@ -29,6 +29,7 @@ composer require phputil/logger
 <?php
 require_once 'vendor/autoload.php'; // composer
 
+use phputil\Logger;
 use phputil\TextFileLogger;
 use phputil\FakeLogger;
 
@@ -36,12 +37,14 @@ $inDebugMode = true;
 
 $logger = $inDebugMode ? new TextFileLogger( 'log.txt' ) : new FakeLogger();
 
-$logger->info( 'Hello world' );
+$logger->info( 'Something will happen' );
 try {
-	throw new \Exception( 'something bad happened' );
+	throw new \Exception( 'Hummm... something bad happened.' );
 } catch ( \Exception $e ) {
 	// Logs message and trace
-	$logger->error( 'Ops, I did not expect that!', $e );
+	$logger->error( 'Ouch, I did not expect that!', $e );
 }
+
+$logger->log( Logger::DEBUG, "That's awesome!" );
 ?>
 ```
