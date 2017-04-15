@@ -23,7 +23,27 @@ Available log methods:
 composer require phputil/logger
 ```
 
-### Example
+### Example 1
+
+```php
+<?php
+require_once 'vendor/autoload.php'; // composer
+
+use phputil\TextFileLogger;
+
+// It is recommended to set the DateTimeZone when using TextFileLogger.
+$logger = new TextFileLogger( 'log.txt', false, new \DateTimeZone( 'America/Sao_Paulo' ) );
+
+$logger->info( 'Something will happen' );
+$logger->debug( 'Something happened.' );
+$logger->warn( 'Wait!' );
+$logger->error( 'Ouch.' );
+
+$logger->log( Logger::DEBUG, "That's awesome!" );
+?>
+```
+
+### Example 2
 
 ```php
 <?php
@@ -35,7 +55,9 @@ use phputil\FakeLogger;
 
 $inDebugMode = true;
 
-$logger = $inDebugMode ? new TextFileLogger( 'log.txt' ) : new FakeLogger();
+$logger = $inDebugMode
+	? new TextFileLogger( 'log.txt', false, new \DateTimeZone( 'America/Sao_Paulo' ) )
+	: new FakeLogger();
 
 $logger->info( 'Something will happen' );
 try {
