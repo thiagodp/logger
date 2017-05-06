@@ -8,7 +8,7 @@ Provided interfaces and classes:
 * [phputil\BaseLogger](https://github.com/thiagodp/logger/blob/master/lib/BaseLogger.php) abstract class
 * [phputil\TextFileLogger](https://github.com/thiagodp/logger/blob/master/lib/TextFileLogger.php) class
 * [phputil\FakeLogger](https://github.com/thiagodp/logger/blob/master/lib/FakeLogger.php) class (v1.1+)
-* [phputil\FakeLogger](https://github.com/thiagodp/logger/blob/master/lib/EchoLogger.php) class (v1.3+)
+* [phputil\EchoLogger](https://github.com/thiagodp/logger/blob/master/lib/EchoLogger.php) class (v1.3+)
 
 Available log methods:
 
