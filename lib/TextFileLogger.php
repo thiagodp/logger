@@ -6,7 +6,7 @@ use \DateTime;
 use \DateTimeZone;
 
 /**
- *  Logs to a simple text file.
+ *  Logs to a plain text file.
  *  
  *  @author	Thiago Delgado Pinto
  */
@@ -28,7 +28,9 @@ class TextFileLogger extends BaseLogger {
 		$fp = @fopen( $this->fileName, 'a', $this->useIncludePath );
 		if ( false === $fp ) { return false; }
 		
-		$data = $this->makeData( $type, $message, $e, $context );
+		$dt = new DateTime();
+		$dt->setTimezone( $this->dateTimeZone );		
+		$data = $this->makeData( $dt, $type, $message, $e, $context );
 		
 		$writeResult = @fwrite( $fp, $data );
 		$closeResult = @fclose( $fp );
@@ -38,26 +40,6 @@ class TextFileLogger extends BaseLogger {
 		return $closeResult; // true | false
 	}
 	
-	// Complete format is:
-	//
-	// [type] iso-date-time - message >> exception-message - exception-trace | context
-	//
-	private function makeData( $type, $message, Exception $e = null, array $context = array() ) {
-		$dt = new DateTime();
-		$dt->setTimezone( $this->dateTimeZone );
-		$now = $dt->format( 'Y-m-d\TH:i:sO' ); // ISO-8601
-		$s = "[$type] $now - $message";
-		if ( $e !== null ) {
-			$msg = $e->getMessage();
-			$trace = $e->getTraceAsString();
-			$s .= " >> $msg - $trace";
-		}
-		if ( count( $context ) > 0 ) {
-			$s .= ' | ' . http_build_query( $context, '', ', ' ); // key1=value1, ..., keyN=valueN
-		}
-		$s .= "\n";
-		return $s;
-	}
 }
 
 ?>
