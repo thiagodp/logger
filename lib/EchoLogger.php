@@ -12,14 +12,14 @@ use \DateTimeZone;
  */
 class EchoLogger extends BaseLogger {
 	
+	private $dateTimeZone;	
 	private $useFlush;
 	private $useObFlush;
-	private $dateTimeZone;
 	
-	function __construct( $useFlush = true, $useObFlush = true, $dateTimeZone = null ) {
+	function __construct( $dateTimeZone = null, $useFlush = true, $useObFlush = true ) {
+		$this->dateTimeZone = $dateTimeZone;
 		$this->useFlush = $useFlush;
 		$this->useObFlush = $useObFlush;
-		$this->dateTimeZone = $dateTimeZone;
 	}
 	
 	/** @inheritDoc */
@@ -28,10 +28,10 @@ class EchoLogger extends BaseLogger {
 		$dt->setTimezone( $this->dateTimeZone );
 		echo $this->makeData( $dt, $type, $message, $e, $context );
 		if ( $this->useObFlush ) {
-			ob_flush();
+			@ob_flush();
 		}
 		if ( $this->useFlush ) {
-			flush();
+			@flush();
 		}
 		return true;
 	}
